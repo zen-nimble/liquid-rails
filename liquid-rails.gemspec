@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = ''
   spec.license       = 'MIT'
 
-  spec.required_ruby_version     = '>= 2.7'
+  spec.required_ruby_version     = '>= 2.6'
   spec.required_rubygems_version = '>= 1.8'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -26,12 +26,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'liquid',   '~> 5.0'
   spec.add_dependency 'rails',    '>= 6.0', '< 8.0'
 
-  spec.add_development_dependency 'capybara',    '~> 3.34'
+  spec.add_development_dependency 'capybara',    '~> 3.34.0'
   spec.add_development_dependency 'coveralls',   '~> 0.8'
   spec.add_development_dependency 'guard-rspec', '~> 4.7'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'pry-rails',   '~> 0.3'
   spec.add_development_dependency 'rspec-rails', '~> 4.0'
-  spec.add_development_dependency 'simplecov',   '~> 0.16'
+  spec.add_development_dependency 'simplecov',   '~> 0.16.0'
   spec.add_development_dependency 'sqlite3',     '~> 1.4'
 end
