@@ -7,8 +7,10 @@ module Liquid
         extend ActiveSupport::Concern
 
         def setup_view_and_controller
+          ephemeral_view_class = Class.new(ActionView::Base)
+
           @controller           = ActionController::Base.new
-          @view                 = ActionView::Base.new(ActionView::LookupContext.new(''), {}, @controller)
+          @view                 = ephemeral_view_class.new(ActionView::LookupContext.new(''), {}, @controller)
           @request              = ActionDispatch::TestRequest.new({ 'PATH_INFO' => '/' })
           @response             = ActionDispatch::TestResponse.new
           @response.request     = @request
@@ -16,8 +18,8 @@ module Liquid
           @controller.response  = @response
           @controller.params    = {}
           @view.assign_controller(@controller)
-          @view.class.send(:include, @controller._helpers)
-          @view.class.send(:include, ::Rails.application.routes.url_helpers)
+          ephemeral_view_class.send(:include, @controller._helpers)
+          ephemeral_view_class.send(:include, ::Rails.application.routes.url_helpers)
         end
 
         def view
